@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,7 +15,7 @@ namespace Aquaponics1.Controllers
         [HttpGet]
         public ActionResult<JObject> Get()
         {
-            return SerialListener.read_data();
+            return SerialListener.data;
         }
 
         // GET api/values/5

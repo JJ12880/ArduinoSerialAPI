@@ -11,6 +11,8 @@ namespace Aquaponics1
     {
         static SerialPort _serialPort;
 
+        public static JObject data = new JObject();
+
         public static void init()
         {
             _serialPort = new SerialPort();
@@ -19,11 +21,11 @@ namespace Aquaponics1
             _serialPort.Open();
         }
 
-        public static JObject read_data()
+        private static JObject read_data()
         {
-            return new JObject();
+           
 
-            JObject data = new JObject();
+           
             string json = _serialPort.ReadExisting();
             while (true)
             {
@@ -35,13 +37,14 @@ namespace Aquaponics1
                 try
                 {
                     data = JObject.Parse(json);
+                    Thread.Sleep(5000);
                 }
                 catch
                 {
                     continue;
                 }
 
-                return data;
+                
 
             }
         }  
